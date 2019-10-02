@@ -42,19 +42,43 @@ console.log(orderByDuration);
 function howManyMovies (moviesArray) {
     let stevenSpielbergMovies = moviesArray.filter(function(oneMovie) {
         return oneMovie.director.includes("Steven Spielberg");
-        /*let dramaArray = movieArray.filter(function(type){
-            return type.genre.includes("Drama");
-        });
-    */
     });
-
-    
+    let dramaArray = stevenSpielbergMovies.filter(function(type){
+        return type.genre.includes("Drama");
+    });
     if (stevenSpielbergMovies.length === 0) return 0;     
-    return stevenSpielbergMovies.length;
+    return dramaArray.length;
 }
 
 // Iteration 5: Alphabetic Order - Order by title and print the first 20 titles
+function orderAlphabetically (moviesArray) {
+    const orderMovies = moviesArray.sort(function(movieA, movieB) {
+        if (movieA.title < movieB.title) return -1;
+        if (movieA.title > movieB.title) return 1;
+        if (movieA.title === movieB.title) return 0; 
+    });
+    return orderMovies;
+
+    const newArray = [];
+    if (orderMovies.length >= 20) {
+        for (let i=0 ; i<20 ; i++) {
+            newArray[i] = newArray.push(orderMovies[i]);
+        } 
+    } else {
+        for (let i=0 ; i<orderMovies.length ; i++) {
+            newArray[i] = newArray.push(orderMovies[i]);
+        }
+    }
+    return orderMovies;
+}
+
+console.log(orderAlphabetically);
 
 // Iteration 6: Time Format - Turn duration of the movies from hours to minutes
+
+
+
+
+
 
 // BONUS Iteration: Best yearly rate average - Best yearly rate average
