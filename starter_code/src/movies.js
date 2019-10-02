@@ -83,7 +83,6 @@ function bestYearAvg(arr) {
     rateAvgByYear = years.map((year) => {
         return [year, ratesAverage(arr.filter((el) => el.year === year))];
     })
-     console.log("rateAvgByYear", rateAvgByYear)
 
     // Sort by rate (ASC), then by year (ASC)
     rateAvgByYear.sort(function compare(year1, year2) {
