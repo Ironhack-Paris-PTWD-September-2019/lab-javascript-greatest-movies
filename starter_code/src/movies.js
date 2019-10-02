@@ -26,16 +26,51 @@ function orderByDuration(movies) {
   var sortedMovies = movies.sort(function compare(movie1, movie2){
   if (movie1.duration < movie2.duration) return -1;
   if (movie1.duration > movie2.duration) return 1;
-  if ((movie1.duration === movie2.duration) && (movie1.title===movie2.title))  return 0
+  if (movie1.duration === movie2.duration) {
+    if (movie1.title === movie2.title) {
+      return 0;
+    } else if (movie1.title < movie2.title) {
+      return -1;
+    } else {
+      return 1;
+    }
+  }
   });
   return sortedMovies;
 }
 
 // Iteration 4: Steven Spielberg. The best? - How many movies did STEVEN SPIELBERG direct
-
+function howManyMovies(movies) {
+ var dramaSpielberg = movies.filter(function(movie){
+   return movie.genre.includes('Drama') && movie.director === 'Steven Spielberg';
+ });
+ if (movies.length < 1) {
+  return 0;
+  } else { 
+    return dramaSpielberg.length;
+  }
+}
 
 // Iteration 5: Alphabetic Order - Order by title and print the first 20 titles
+function orderAlphabetically(movies) {
+  var moviesOrder = movies.sort(function(movie1, movie2){
+    if (movie1.title < movie2.title){
+      return -1;
+    } else if (movie1.title > movie2.title) {
+      return 1;
+    } else {
+      return 0;
+    }
+  }).slice(0, 20);
+  var twentyFirstMovies = moviesOrder.map(function(titleMovie){
+    return titleMovie.title;
+  });
+  return twentyFirstMovies;
+}
 
 // Iteration 6: Time Format - Turn duration of the movies from hours to minutes
+function turnHoursToMinutes(){
+  
+}
 
 // BONUS Iteration: Best yearly rate average - Best yearly rate average
