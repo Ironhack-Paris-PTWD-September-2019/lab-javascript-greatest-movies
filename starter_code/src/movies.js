@@ -73,3 +73,28 @@ function calculateMinutes(movie){
 
 
 // BONUS Iteration: Best yearly rate average - Best yearly rate average
+function bestYearAvg(tabMovies){
+  if(!tabMovies.length){return null};
+  if(tabMovies.length===1){return `The best year was ${tabMovies[0].year} with an average rate of ${tabMovies[0].rate}`;};
+  var tabYearsUnique=tabMovies.map(movie=>movie.year).filter(onlyUnique); 
+  var tabYearsAvgRate=tabYearsUnique.map(year=>{
+    var avgYear=Math.round(tabMovies.filter(movie=>movie.year===year).reduce((sum,movie)=>sum+movie.rate/(tabMovies.filter(movie=>movie.year===year).length),0)*100)/100;
+    return {year:year, avg:avgYear}
+  })
+  tabYearsAvgRate.sort(function(a,b){
+    if (a.avg>b.avg){return -1}
+    else if (a.avg<b.avg){return 1}
+    else if (Number(a.year)<Number(b.year)){return -1}
+    else if (Number(a.year)>Number(b.year)){return 1}
+    else {return 0};
+
+  });
+
+  return `The best year was ${tabYearsAvgRate[0].year} with an average rate of ${tabYearsAvgRate[0].avg}`;
+  
+}
+
+//function that returns unique values from an array
+function onlyUnique(value, index, self) { 
+  return self.indexOf(value) === index;
+}
