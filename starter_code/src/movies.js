@@ -57,8 +57,55 @@ function howManyMovies(arr){
 };
 
 
-// Iteration 5: Alphabetic Order - Order by title and print the first 20 titles
-
+//Iteration 5: Alphabetic Order - Order by title and print the first 20 titles
+function orderAlphabetically(films) {
+    films.sort(function(a,b){
+        if (a.title < b.title) {
+            return -1;
+        } else if (a.title > b.title){
+            return 1;
+        } else {
+            return 0;
+        }
+       });
+       var arrFilms = [];
+       for (var i = 0; i < films.length; i++) {
+           arrFilms.push(films[i].title);
+       }; 
+       // j'aurais pu utiliser maps là ? ^
+       if (arrFilms.length <= 20) {
+           return arrFilms;
+       } else {
+           return arrFilms.slice(0,20);
+       };
+   };
+   console.log(orderAlphabetically(movies)); 
 // Iteration 6: Time Format - Turn duration of the movies from hours to minutes
-
+function turnHoursToMinutes(films) {
+    var newArrMovies = []; 
+    newArrMovies = films.slice();
+    
+    newArrMovies.forEach (function (el) {
+        if (el.duration.length > 5) {
+            el.duration = Number(el.duration[0])*60 + Number(el.duration[3]) + Number(el.duration[4]);
+        } else if (2 > el.duration.length > 5) {
+            el.duration = Number(el.duration[0] + el.duration[1]);
+        } else {
+            el.duration = Number(el.duration[0])*60;
+        }
+    });
+    return newArrMovies;
+};
 // BONUS Iteration: Best yearly rate average - Best yearly rate average
+
+
+
+
+
+
+
+
+
+
+
+
