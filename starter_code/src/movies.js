@@ -72,5 +72,28 @@ function orderAlphabetically(movies) {
 }
 
 // Iteration 6: Time Format - Turn duration of the movies from hours to minutes
+function turnHoursToMinutes(movies) {
+    return movies.map(movie => {
+        let hours = 0;
+        let minutes = 0;
+
+        if(!movie.duration.includes(`min`)) { // if no minutes
+            let hoursSplit = movie.duration.split(`h`);
+            hours = hoursSplit[0];
+        } else if (!movie.duration.includes(`h `)) { // if no hours
+            let minutesSplit = movie.duration.split(`min`);
+            minutes = minutesSplit[0];
+        } else { // hours and minutes
+            let hoursSplit = movie.duration.split(`h `);
+            let minutesSplit = hoursSplit[1].split(`min`);
+            hours = hoursSplit[0];
+            minutes = minutesSplit[0];
+        }
+
+        let movieDuration = Number(hours) * 60 + Number(minutes);
+
+        return { ...movie, duration: movieDuration};
+    });
+}
 
 // BONUS Iteration: Best yearly rate average - Best yearly rate average
