@@ -94,7 +94,8 @@ function bestYearAvg(tabMovies){
   
 }
 
-//function that returns unique values from an array
+//function that returns unique values from an array for filter function: regarde si l'index de la valeur est bien le premier index de cette valeur dans le 
+//tableau. Si ce n'est pas le cas, renvoie false donc n'est pas prise dans le filtre
 function onlyUnique(value, index, self) { 
   return self.indexOf(value) === index;
 }
